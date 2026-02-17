@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architectural Name</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #1a1a1a;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-top {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        .logo-bottom {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 30px;
+            height: 2px;
+            background: #1a1a1a;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Mobile Menu*/ 
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: white;
+            transition: right 0.4s ease;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu nav {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .mobile-menu nav a {
+            font-size: 2rem;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 300;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .mobile-menu nav a:hover {
+            opacity: 0.6;
+        }
+
+        .mobile-menu nav a.has-submenu::after {
+            content: '›';
+            font-size: 2.5rem;
+            font-weight: 300;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            width: 50px;
+            height: 50px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: beige;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0 0L100 100M100 0L0 100" stroke="white" stroke-width="0.5" opacity="0.1"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: black;
+            z-index: 1;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        /* Work Section 
+        .work-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: beige;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .work-content {
+            text-align: center;
+            color: black;
+            z-index: 1;
+            padding: 2rem;
+        }
+
+        .work-content h2 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 300;
+            margin-bottom: 3rem;
+            letter-spacing: -1px;
+        }
+
+        .work-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .work-category {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 300;
+            color: black;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            padding: 1rem 2rem;
+        }
+
+        .work-category::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .work-category:hover::after {
+            width: 80%;
+        }
+
+        .work-category:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }  
+
+        /* About Section 
+        .about-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .about-content {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact Section 
+        .contact-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 2rem;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .contact-content h2 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.6;
+        }*/
+
+        /* Footer */
+        footer {
+            background: black;
+            color: beige;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+/* menu pages */
+.menu-page {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  transform: translateX(100%);
+  transition: transform 0.4s ease;
+}
+
+.menu-page.active {
+  transform: translateX(0);
+}
+
+
+.submenu a {
+  display: block;
+  color: black;
+  padding: 8px 10px;
+  text-decoration: none;
+}
+
+.submenu a:hover {
+  background: #333;
+}
+
+ 
+ /* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+@media (min-width: 768px) {
+    .work-categories {
+        gap: 3rem;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="#home" class="logo">
+           
+            <div class="logo-text">
+                <span class="logo-top">DEJI 4PF</span>
+                <span class="logo-bottom">VISUAL</span>
+            </div>
+        </a>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Mobile Menu 
+    <div class="mobile-menu" id="mobileMenu">
+        <nav>
+        <a href="#home">Home</a>
+        <div class="nav-item">
+        <a href="#" class="has-submenu">Work</a>
+        <div class="submenu">
+        <a href="#projects">Projects</a>
+        <a href="#clients">Clients</a>
+        <a href="#portfolio">Portfolio</a>
+        </div>
+    </div>
+</nav>
+
+            
+       
+        <div class="social-icons">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram"></a>
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="Behance">Be</a>
+        </div>
+    </div> -->
+    <!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+
+  <!-- MAIN MENU -->
+  <div class="menu-page active" id="mainMenu">
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#home">Book</a>
+      <a href="#" class="has-submenu" id="openWork">Design</a>
+    </nav>
+
+    <div class="social-icons">
+  <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+  <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+</div>
+  </div>
+
+  <!-- WORK MENU -->
+  <div class="menu-page" id="workMenu">
+    <nav>
+      <a href="#" id="backToMain">‹ Back</a>
+      <a href="#projects">Rules Of Design</a>
+      <a href="#clients">Rule Of Thirds</a>
+      <a href="#portfolio">Photography</a>
+      <a href="#colorofschemes">Color Of Schemes</a>
+      <a href="#images">Images</a>
+    </nav>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Deji Work Name</h1>
+            <p>Architectural Visualization & Design</p>
+        </div>
+    </section>
+
+    <!-- Work Section 
+    <section class="work-section" id="work">
+        <div class="work-content">
+            <h2>Our Work</h2>
+            <div class="work-categories">
+                <a href="#interiors" class="work-category">Interiors</a>
+                <a href="#exteriors" class="work-category">Exteriors</a>
+            </div>
+        </div>
+    </section>
+
+    About Section 
+    <section class="about-section" id="about">
+        <div class="about-content">
+            <h2>About Us</h2>
+            <p>We are a creative studio specializing in architectural visualization, bringing visions to life through stunning 3D renderings and immersive visual experiences.</p>
+            <p>Our team combines technical expertise with artistic vision to create photorealistic visualizations that help architects, developers, and designers communicate their ideas effectively.</p>
+        </div>
+    </section>-->
+
+    <!-- Contact Section 
+    <section class="contact-section" id="contact">
+        <div class="contact-content">
+            <h2>Get In Touch</h2>
+            <div class="contact-info">
+                <a href="mailto:hello@yourstudio.com">hello@yourstudio.com</a>
+                <a href="tel:+1234567890">+123 456 7890</a>
+            </div>
+            <div class="social-icons" style="margin-top: 3rem; justify-content: center;">
+                <a href="#" aria-label="Facebook">f</a>
+                <a href="#" aria-label="Instagram"></a>
+                <a href="#" aria-label="LinkedIn">in</a>
+                <a href="#" aria-label="Behance">Be</a>
+            </div>
+        </div>
+    </section>-->
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Olateju. All rights reserved.</p>
+    </footer>
+
+    <script>
+        
+  // Hamburger Menu Toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+  });
+
+  // MENU PAGES
+  const mainMenu = document.getElementById('mainMenu');
+  const workMenu = document.getElementById('workMenu');
+  const openWork = document.getElementById('openWork');
+  const backToMain = document.getElementById('backToMain');
+
+  // Open Work menu page
+  openWork.addEventListener('click', (e) => {
+    e.preventDefault();
+    mainMenu.classList.remove('active');
+    workMenu.classList.add('active');
+  });
+
+  // Back to Main menu
+  backToMain.addEventListener('click', (e) => {
+    e.preventDefault();
+    workMenu.classList.remove('active');
+    mainMenu.classList.add('active');
+  });
+
+  // Close menu when clicking a REAL link (not Work / Back)
+  const menuLinks = document.querySelectorAll(
+    '.mobile-menu a:not(#openWork):not(#backToMain)'
+  );
+
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+
+      // reset menu pages
+      workMenu.classList.remove('active');
+      mainMenu.classList.add('active');
+    });
+  });
+
+  // Close menu when clicking outside
+  mobileMenu.addEventListener('click', (e) => {
+    if (e.target === mobileMenu) {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+
+      // reset pages
+      workMenu.classList.remove('active');
+      mainMenu.classList.add('active');
+    }
+  });
+</script>
+
+    
+</body>
+</html>
