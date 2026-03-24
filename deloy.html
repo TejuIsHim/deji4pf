@@ -220,6 +220,26 @@
             font-weight: 300;
             opacity: 0.95;
         }
+        #openDesignBtn {
+      margin-top: 25px;
+      padding: 14px 32px;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    
+      color: black;
+      background: transparent;
+      border: 1px solid white;
+    
+      cursor: pointer;
+      transition: all 0.3s ease;
+}
+
+  /* Hover effect */
+    #openDesignBtn:hover {
+      background: white;
+      color: black;
+    }
 
         /* Work Section 
         .work-section {
@@ -462,6 +482,7 @@ html {
       <a href="#home">Home</a>
       <a href="#" class="has-submenu" id="openWork">Book</a>
       <a href="#home">Architectural Design</a>
+    <button id="openDesignBtn">View Design</button>
     </nav>
 
     <div class="social-icons">
@@ -597,6 +618,17 @@ html {
       mainMenu.classList.add('active');
     }
   });
+        const openDesignBtn = document.getElementById("openDesignBtn");
+
+openDesignBtn.addEventListener("click", () => {
+  // 1. Open hamburger menu if it's closed
+  hamburger.classList.add('active');
+  mobileMenu.classList.add('active');
+
+  // 2. Switch to Work menu
+  mainMenu.classList.remove('active');
+  workMenu.classList.add('active');
+});
 </script>
 
     
