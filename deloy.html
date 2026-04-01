@@ -221,161 +221,27 @@
             opacity: 0.95;
         }
         #openDesignBtn {
-      margin-top: 25px;
-      padding: 14px 32px;
-      font-size: 14px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    
-      color: black;
-     font-weight: 400;
-      background: transparent;
-      border: 1px solid white;
-    
-      cursor: pointer;
-      transition: all 0.3s ease;
+  margin-top: 25px;
+  padding: 14px 32px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+ font-weight: 700;
+  color: black;
+  background: transparent;
+  border: 1px solid white;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-  /* Hover effect */
-    #openDesignBtn:hover {
-      background: white;
-      color: black;
-    }
+/* Hover effect */
+#openDesignBtn:hover {
+  background: white;
+  color: black;
+}
 
-        /* Work Section 
-        .work-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            background: beige;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        .work-content {
-            text-align: center;
-            color: black;
-            z-index: 1;
-            padding: 2rem;
-        }
-
-        .work-content h2 {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 300;
-            margin-bottom: 3rem;
-            letter-spacing: -1px;
-        }
-
-        .work-categories {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .work-category {
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            font-weight: 300;
-            color: black;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            padding: 1rem 2rem;
-        }
-
-        .work-category::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background: white;
-            transition: width 0.3s ease;
-        }
-
-        .work-category:hover::after {
-            width: 80%;
-        }
-
-        .work-category:hover {
-            transform: scale(1.05);
-            text-shadow: 0 0 20px rgba(255,255,255,0.5);
-        }  
-
-        /* About Section 
-        .about-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 5rem 2rem;
-            background: white;
-        }
-
-        .about-content {
-            max-width: 800px;
-            text-align: center;
-        }
-
-        .about-content h2 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 300;
-            margin-bottom: 2rem;
-            color: #1a1a1a;
-        }
-
-        .about-content p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #666;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Contact Section 
-        .contact-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 5rem 2rem;
-            background: #1a1a1a;
-            color: white;
-        }
-
-        .contact-content {
-            max-width: 600px;
-            text-align: center;
-        }
-
-        .contact-content h2 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 300;
-            margin-bottom: 2rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .contact-info a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.3rem;
-            transition: opacity 0.3s ease;
-        }
-
-        .contact-info a:hover {
-            opacity: 0.6;
-        }*/
+     
 
         /* Footer */
         footer {
@@ -451,29 +317,7 @@ html {
         </div>
     </header>
 
-    <!-- Mobile Menu 
-    <div class="mobile-menu" id="mobileMenu">
-        <nav>
-        <a href="#home">Home</a>
-        <div class="nav-item">
-        <a href="#" class="has-submenu">Work</a>
-        <div class="submenu">
-        <a href="#projects">Projects</a>
-        <a href="#clients">Clients</a>
-        <a href="#portfolio">Portfolio</a>
-        </div>
-    </div>
-</nav>
-
-            
-       
-        <div class="social-icons">
-            <a href="#" aria-label="Facebook">f</a>
-            <a href="#" aria-label="Instagram"></a>
-            <a href="#" aria-label="LinkedIn">in</a>
-            <a href="#" aria-label="Behance">Be</a>
-        </div>
-    </div> -->
+   
     <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
 
@@ -481,9 +325,8 @@ html {
   <div class="menu-page active" id="mainMenu">
     <nav>
       <a href="#home">Home</a>
-      <a href="#" class="has-submenu" id="openWork">Book</a>
-      <a href="#home">Architectural Design</a>
-    <button id="openDesignBtn">View Design</button>
+      <a href="#home">Book</a>
+      <a href="#" class="has-submenu" id="openWork">Design</a>
     </nav>
 
     <div class="social-icons">
@@ -514,47 +357,14 @@ html {
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Deji Work Name</h1>
+            <h1>Deji Work </h1>
             <p>Architectural Visualization & Design</p>
+            <button id="openDesignBtn">OUR PRODUCT</button>
+            
         </div>
     </section>
 
-    <!-- Work Section 
-    <section class="work-section" id="work">
-        <div class="work-content">
-            <h2>Our Work</h2>
-            <div class="work-categories">
-                <a href="#interiors" class="work-category">Interiors</a>
-                <a href="#exteriors" class="work-category">Exteriors</a>
-            </div>
-        </div>
-    </section>
-
-    About Section 
-    <section class="about-section" id="about">
-        <div class="about-content">
-            <h2>About Us</h2>
-            <p>We are a creative studio specializing in architectural visualization, bringing visions to life through stunning 3D renderings and immersive visual experiences.</p>
-            <p>Our team combines technical expertise with artistic vision to create photorealistic visualizations that help architects, developers, and designers communicate their ideas effectively.</p>
-        </div>
-    </section>-->
-
-    <!-- Contact Section 
-    <section class="contact-section" id="contact">
-        <div class="contact-content">
-            <h2>Get In Touch</h2>
-            <div class="contact-info">
-                <a href="mailto:hello@yourstudio.com">hello@yourstudio.com</a>
-                <a href="tel:+1234567890">+123 456 7890</a>
-            </div>
-            <div class="social-icons" style="margin-top: 3rem; justify-content: center;">
-                <a href="#" aria-label="Facebook">f</a>
-                <a href="#" aria-label="Instagram"></a>
-                <a href="#" aria-label="LinkedIn">in</a>
-                <a href="#" aria-label="Behance">Be</a>
-            </div>
-        </div>
-    </section>-->
+  
 
     <!-- Footer -->
     <footer>
@@ -577,6 +387,7 @@ html {
   const workMenu = document.getElementById('workMenu');
   const openWork = document.getElementById('openWork');
   const backToMain = document.getElementById('backToMain');
+
 
   // Open Work menu page
   openWork.addEventListener('click', (e) => {
@@ -619,7 +430,8 @@ html {
       mainMenu.classList.add('active');
     }
   });
-        const openDesignBtn = document.getElementById("openDesignBtn");
+
+  const openDesignBtn = document.getElementById("openDesignBtn");
 
 openDesignBtn.addEventListener("click", () => {
   // 1. Open hamburger menu if it's closed
@@ -634,5 +446,4 @@ openDesignBtn.addEventListener("click", () => {
 
     
 </body>
-
 </html>
